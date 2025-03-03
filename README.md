@@ -15,6 +15,9 @@ A reinforcement learning experiments package for implementing and benchmarking s
       - [2. Clean Experiment Scripts](#2-clean-experiment-scripts)
       - [3. Advanced Usage](#3-advanced-usage)
     - [Project Structure](#project-structure)
+  - [Algorithm Comparison](#algorithm-comparison)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -163,5 +166,28 @@ rl-odyssey/
 │       └── ... # Other utilities
 ├── Dockerfile.cpu # CPU container definition
 ├── Dockerfile.gpu # GPU container definition
-└── setup.py # Package installatio
+└── setup.py # Package installation
 ```
+
+## Algorithm Comparison
+
+| Algorithm | Type                | On/Off Policy | Action Space        | Key Features                                                   |
+| --------- | ------------------- | ------------- | ------------------- | -------------------------------------------------------------- |
+| PG        | Policy Optimization | On-policy     | Discrete/Continuous | Simple, high variance, no value function                       |
+| A2C       | Actor-Critic        | On-policy     | Discrete/Continuous | Synchronous, advantage function, value baseline                |
+| A3C       | Actor-Critic        | On-policy     | Discrete/Continuous | Asynchronous, multiple workers, parallel training              |
+| TRPO      | Policy Optimization | On-policy     | Discrete/Continuous | Trust region constraint, monotonic improvement guarantee       |
+| PPO       | Policy Optimization | On-policy     | Discrete/Continuous | Clipped objective, stable updates, sample efficient            |
+| DDPG      | Actor-Critic        | Off-policy    | Continuous          | Deterministic policy, experience replay, target networks       |
+| TD3       | Actor-Critic        | Off-policy    | Continuous          | Twin critics, delayed policy updates, target smoothing         |
+| SAC       | Actor-Critic        | Off-policy    | Continuous          | Entropy maximization, stochastic policy, temperature parameter |
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- OpenAI Gym/Gymnasium for providing the reinforcement learning environments
+- PyTorch team for the deep learning framework
+- Original papers for each algorithm implementation
