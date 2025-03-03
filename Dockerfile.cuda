@@ -1,0 +1,29 @@
+# Use an official CUDA base image (adjust the version as needed)
+FROM nvidia/cuda:11.4.2-base-ubuntu20.04
+
+# Set noninteractive mode for apt-get and configure Python environment
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install Python3, pip, and other system dependencies
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip \
+    git \
+    build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy and install dependencies
+COPY requirements.txt /app/requirements.txt
+RUN pip3 install --upgrade pip && pip3 install --no-cache-dir -r requirements.txt
+
+# Copy the entire project
+COPY . /app
+
+# Set working directory to rl_experiments
+WORKDIR /app/rl_experiments
+
+# Default command: run continuous_sac.py (override if desired)
+CMD ["python3", "continuous_sac.py"]

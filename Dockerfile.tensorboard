@@ -1,0 +1,11 @@
+# Use a lightweight Python image
+FROM python:3.11-slim
+
+# Upgrade pip and install TensorBoard
+RUN pip install --upgrade pip && pip install tensorboard
+
+# Expose TensorBoard port
+EXPOSE 6006
+
+# Run tensorboard pointing to /logs and binding to all interfaces so it is accessible externally
+CMD ["tensorboard", "--logdir=/logs", "--host=0.0.0.0"]

@@ -1,0 +1,22 @@
+name: RL-Odyssey
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - gymnasium==1.0.0
+  - numpy
+  - pandas
+  - matplotlib
+  - imageio
+  - tensorboard
+  - dm-control
+  - ipykernel
+  - ffmpeg
+  - pip:
+      - "gymnasium[atari]==1.0.0"
+      - "gymnasium[classic_control]"
+      - torch
+      - opencv-python
+      - "imageio[ffmpeg]"

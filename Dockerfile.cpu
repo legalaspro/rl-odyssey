@@ -1,0 +1,36 @@
+# Use a lightweight Python 3.11 image (make sure it’s 64-bit)
+FROM python:3.11-slim
+
+# Avoid writing .pyc files and ensure unbuffered output
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies (adding zlib1g-dev, ninja-build, and cmake to build ale-py)
+# Install system dependencies including SDL2 development package to satisfy ale-py build
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    zlib1g-dev \
+    libsdl2-dev \
+    ninja-build \
+    cmake \
+ && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install dependencies
+COPY requirements.txt /app/requirements.txt
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire project into the container
+COPY . /app
+
+# Install your package in editable mode so that local modules (like helpers) are available
+RUN pip install -e .
+
+# Set working directory to where your experiment scripts are
+WORKDIR /app/rl_experiments
+
+# Default command: run continuous_sac.py (override via docker run if needed)
+CMD ["python", "continuous_sac.py"]

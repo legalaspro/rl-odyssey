@@ -1,0 +1,10 @@
+gymnasium==1.0.0
+gymnasium[atari]
+torch
+numpy
+pandas
+matplotlib
+imageio
+tensorboard
+dm-control
+opencv-python
