@@ -8,6 +8,7 @@ dependencies:
   - gymnasium==1.0.0
   - numpy
   - pandas
+  - ipympl
   - matplotlib
   - imageio
   - tensorboard
