@@ -18,6 +18,8 @@ dependencies:
   - pip:
       - "gymnasium[atari]==1.0.0"
       - "gymnasium[classic_control]"
+      - "pettingzoo[mpe]"
+      - supersuit
       - torch
       - opencv-python
       - "imageio[ffmpeg]"
