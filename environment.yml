@@ -12,13 +12,16 @@ dependencies:
   - matplotlib
   - imageio
   - tensorboard
-  - dm-control
+  - dm-control=1.0.19
   - ipykernel
   - ffmpeg
   - pip:
       - "gymnasium[atari]==1.0.0"
       - "gymnasium[classic_control]"
+      - "gymnasium[mujoco]"
       - "pettingzoo[mpe]"
+      - "pettingzoo[sisl]"
+      - "gymnasium-robotics==1.3.1"
       - supersuit
       - torch
       - opencv-python
